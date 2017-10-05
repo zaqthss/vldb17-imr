@@ -1,4 +1,4 @@
-# vldb17-anomaly
+# vldb17-imr
 Code release of ["Time Series Data Cleaning: From Anomaly Detection to Anomaly Repairing" (VLDB 17)](https://dl.acm.org/citation.cfm?id=3115410).
 The description of code files are listed below:
 
