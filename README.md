@@ -23,8 +23,9 @@ The schema of the data file contains five columns,
 - isLabel(boolean): whether this point is labeled or not
 
 Attention
-> The example dataset is `data/ild3k.data`
-> The first p data must be labeled
+
+- The example dataset is `data/ild3k.data`
+- The first p data must be labeled
 
 Parameters
 ----------
