@@ -1,5 +1,5 @@
 # vldb17-anomaly
-Code release of "Time Series Data Cleaning: From Anomaly Detection to Anomaly Repairing" (VLDB 17).
+Code release of ["Time Series Data Cleaning: From Anomaly Detection to Anomaly Repairing" (VLDB 17)](https://dl.acm.org/citation.cfm?id=3115410).
 The description of code files are listed below:
 
 - `IMR.java`: Algorithm 1 in the paper. Use IMR algorithm to repair time series with certain lables.
