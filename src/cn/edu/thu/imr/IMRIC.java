@@ -1,9 +1,9 @@
-package cn.edu.thu.anomaly;
+package cn.edu.thu.imr;
 
 import java.util.ArrayList;
 import Jama.Matrix;
-import cn.edu.thu.anomaly.entity.TimePoint;
-import cn.edu.thu.anomaly.entity.TimeSeries;
+import cn.edu.thu.imr.entity.TimePoint;
+import cn.edu.thu.imr.entity.TimeSeries;
 
 public class IMRIC extends BaseIMR {
 
@@ -544,27 +544,5 @@ public class IMRIC extends BaseIMR {
     }
 
     return resultSeries;
-  }
-
-  public static void main(String[] args) {
-    String inputFileName = "ild3k.data";
-
-    IMRIC imric = new IMRIC();
-
-    TimeSeries dirtySeries = imric.readData(inputFileName, 1);
-    TimeSeries labelSeries = imric.readData(inputFileName, 2);
-    TimeSeries truthSeries = imric.readData(inputFileName, 3);
-    ArrayList<Boolean> labelList = imric.readLabel(inputFileName, 4);
-
-    int p = 3;
-    double delta = 0.1;
-    int maxNumIterations = 100000;
-
-    TimeSeries resultSeries =
-        imric.mainIMRIC(dirtySeries, labelSeries, labelList, p, delta, maxNumIterations);
-
-    double rms = imric.calcRMS(truthSeries, resultSeries);
-
-    System.out.println("RMS error is " + rms);
   }
 }

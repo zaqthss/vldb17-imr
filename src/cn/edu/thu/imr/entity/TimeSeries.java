@@ -1,4 +1,4 @@
-package cn.edu.thu.anomaly.entity;
+package cn.edu.thu.imr.entity;
 
 import java.util.ArrayList;
 
