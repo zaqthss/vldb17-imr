@@ -1,14 +1,8 @@
 package cn.edu.thu.imr;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import Jama.Matrix;
-import cn.edu.thu.imr.entity.TimePoint;
-import cn.edu.thu.imr.entity.TimeSeries;
 
 public class BaseIMR {
   public static double MINVAL = Double.MAX_VALUE;
