@@ -41,9 +41,9 @@ mainIMRIC(p,delta,maxNumIterations,dirtySeries,labelSeries,labelList)
 Input:
 
 ```
-int p = 3
-double delta = 0.1
-int maxNum = 100000
+int p = 3                     // order of the model
+double delta = 0.1            // $\delta$
+int maxNum = 100000           // maximum number of iterations
 TimeSeries dirtySeries
 TimeSeries labelSeries
 ArrayList<Boolean> labelList
