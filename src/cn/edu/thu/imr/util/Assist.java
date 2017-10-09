@@ -3,7 +3,6 @@ package cn.edu.thu.imr.util;
 import cn.edu.thu.imr.entity.TimePoint;
 import cn.edu.thu.imr.entity.TimeSeries;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,25 +20,24 @@ public class Assist {
   /**
    * Basic attributes: timestamp, dirty, label, truth
    *
-   * @param filename
-   * @param index
-   *          which column besides timestamp should be read
-   * @return
+   * @param filename filename
+   * @param index which column besides timestamp should be read
+   * @return data in timeseries form
    */
-  public TimeSeries readData(String filename, int index) {
+  public TimeSeries readData(String filename, int index, String splitOp) {
     TimeSeries timeSeries = new TimeSeries();
 
     try {
       FileReader fr = new FileReader(PATH + filename);
       BufferedReader br = new BufferedReader(fr);
 
-      String line = null;
+      String line;
       long timestamp;
       double value;
-      TimePoint tp = null;
+      TimePoint tp;
 
       while ((line = br.readLine()) != null) {
-        String[] vals = line.split(",");
+        String[] vals = line.split(splitOp);
         timestamp = Long.parseLong(vals[0]);
         value = Double.parseDouble(vals[index]);
 
@@ -49,9 +47,6 @@ public class Assist {
 
       br.close();
       fr.close();
-    } catch (FileNotFoundException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
     } catch (IOException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -62,22 +57,22 @@ public class Assist {
 
   /**
    *
-   * @param filename
-   * @param index
-   * @return
+   * @param filename filename
+   * @param index the label index
+   * @return labelList
    */
-  public ArrayList<Boolean> readLabel(String filename, int index) {
+  public ArrayList<Boolean> readLabel(String filename, int index, String splitOp) {
     ArrayList<Boolean> labelList = new ArrayList<>();
 
     try {
       FileReader fr = new FileReader(PATH + filename);
       BufferedReader br = new BufferedReader(fr);
 
-      String line = null;
+      String line;
       boolean isLabel;
 
       while ((line = br.readLine()) != null) {
-        String[] vals = line.split(",");
+        String[] vals = line.split(splitOp);
         isLabel = Boolean.parseBoolean(vals[index]);
 
         labelList.add(isLabel);
@@ -85,9 +80,6 @@ public class Assist {
 
       br.close();
       fr.close();
-    } catch (FileNotFoundException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
     } catch (IOException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -99,10 +91,10 @@ public class Assist {
   /**
    * RMS sqrt(|modify - truth|^2 / len)
    * s
-   * @param truthSeries
-   * @param resultSeries
-   * @param labelList
-   * @return
+   * @param truthSeries truth
+   * @param resultSeries after repair
+   * @param labelList labelList
+   * @return RMS error
    */
   public double calcRMS(TimeSeries truthSeries, TimeSeries resultSeries, ArrayList<Boolean> labelList) {
     double cost = 0;

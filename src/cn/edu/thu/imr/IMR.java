@@ -9,13 +9,13 @@ public class IMR extends BaseIMR {
 
   /**
    * 
-   * @param dirtySeries
-   * @param labelSeries
-   * @param labelList
-   * @param p
-   * @param delta
-   * @param maxNumIterations
-   * @return
+   * @param dirtySeries dirty
+   * @param labelSeries label
+   * @param labelList labelList
+   * @param p order p
+   * @param delta delta
+   * @param maxNumIterations the maximum number of iterations allowed
+   * @return timeseries after repair
    */
   public TimeSeries mainIMR(TimeSeries dirtySeries, TimeSeries labelSeries,
       ArrayList<Boolean> labelList, int p, double delta, int maxNumIterations) {

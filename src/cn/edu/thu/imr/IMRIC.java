@@ -10,9 +10,9 @@ public class IMRIC extends BaseIMR {
   /**
    * initialize Matrix A and B
    * 
-   * @param A
-   * @param B
-   * @param zs
+   * @param A A
+   * @param B B
+   * @param zs zs
    */
   private void initMatrix(Matrix A, Matrix B, double[] zs) {
     int size = zs.length;
@@ -172,6 +172,12 @@ public class IMRIC extends BaseIMR {
     System.out.println("Stop after " + iterationNum + " iterations");
   }
 
+  /**
+   * p = 1
+   * @param x
+   * @param y
+   * @param zs
+   */
   private void incrementalCompute1(double[][] x, double[][] y, double[] zs) {
     int size = zs.length; // denoting n+1 since starting with 0
     int rowNum = size - p;
@@ -238,6 +244,12 @@ public class IMRIC extends BaseIMR {
     System.out.println("Stop after " + iterationNum + " iterations");
   }
 
+  /**
+   * p = 2
+   * @param x
+   * @param y
+   * @param zs
+   */
   private void incrementalCompute2(double[][] x, double[][] y, double[] zs) {
     int size = zs.length; // denoting n+1 since starting with 0
     int rowNum = size - p;
@@ -333,6 +345,12 @@ public class IMRIC extends BaseIMR {
     System.out.println("Stop after " + iterationNum + " iterations");
   }
 
+  /**
+   * p = 3
+   * @param x
+   * @param y
+   * @param zs
+   */
   private void incrementalCompute3(double[][] x, double[][] y, double[] zs) {
     int size = zs.length; // denoting n+1 since starting with 0
     int rowNum = size - p;
@@ -475,14 +493,14 @@ public class IMRIC extends BaseIMR {
   }
 
   /**
-   * 
-   * @param dirtySeries
-   * @param labelSeries
-   * @param labelList
-   * @param p
-   * @param delta
-   * @param maxNumIterations
-   * @return
+   *
+   * @param dirtySeries dirty
+   * @param labelSeries label
+   * @param labelList labelList
+   * @param p order p
+   * @param delta delta
+   * @param maxNumIterations the maximum number of iterations allowed
+   * @return timeseries after repair
    */
   public TimeSeries mainIMRIC(TimeSeries dirtySeries, TimeSeries labelSeries,
       ArrayList<Boolean> labelList, int p, double delta, int maxNumIterations) {

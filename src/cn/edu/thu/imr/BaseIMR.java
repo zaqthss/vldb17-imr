@@ -31,6 +31,9 @@ public class BaseIMR {
 
   /**
    * learn the parameter can use incremental computation for x and y
+   * @param xMatrix x
+   * @param yMatrix y
+   * @return phi
    */
   protected Matrix learnParamsOLS(Matrix xMatrix, Matrix yMatrix) {
     Matrix phi = new Matrix(p, 1);
@@ -42,7 +45,13 @@ public class BaseIMR {
 
     return phi;
   }
-  
+
+  /**
+   *
+   * @param A A
+   * @param B B
+   * @return phi
+   */
   protected Matrix learnParamsIC(Matrix A, Matrix B) {
     Matrix phi = new Matrix(p, 1);
     
@@ -53,6 +62,9 @@ public class BaseIMR {
 
   /**
    * use phi to combine
+   * @param phi phi
+   * @param xMatrix x
+   * @return yhat
    */
   protected Matrix combine(Matrix phi, Matrix xMatrix) {
     Matrix yhatMatrix = xMatrix.times(phi);
@@ -62,6 +74,9 @@ public class BaseIMR {
 
   /**
    * Absolute minimum
+   * @param yhatMatrix yhat
+   * @param yMatrix y
+   * @return the index of the minimum repair point
    */
   protected int repairAMin(Matrix yhatMatrix, Matrix yMatrix) {
     int rowNum = yhatMatrix.getRowDimension();

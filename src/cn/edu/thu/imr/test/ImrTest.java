@@ -17,18 +17,22 @@ public class ImrTest {
   public static void main(String[] args) {
     String inputFileName = "ild3k.data";
 
-    IMR imr = new IMR();
     Assist assist = new Assist();
+    String splitOp = ",";
 
-    TimeSeries dirtySeries = assist.readData(inputFileName, 1);
-    TimeSeries labelSeries = assist.readData(inputFileName, 2);
-    TimeSeries truthSeries = assist.readData(inputFileName, 3);
-    ArrayList<Boolean> labelList = assist.readLabel(inputFileName, 4);
+    TimeSeries dirtySeries = assist.readData(inputFileName, 1, splitOp);
+    TimeSeries labelSeries = assist.readData(inputFileName, 2, splitOp);
+    TimeSeries truthSeries = assist.readData(inputFileName, 3, splitOp);
+    ArrayList<Boolean> labelList = assist.readLabel(inputFileName, 4, splitOp);
+
+    double rmsDirty = assist.calcRMS(truthSeries, dirtySeries, labelList);
+    System.out.println("Dirty RMS error is " + rmsDirty);
 
     int p = 3;
     double delta = 0.1;
     int maxNumIterations = 100000;
 
+    IMR imr = new IMR();
     TimeSeries resultSeries =
         imr.mainIMR(dirtySeries, labelSeries, labelList, p, delta, maxNumIterations);
 
