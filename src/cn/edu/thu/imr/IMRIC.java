@@ -554,7 +554,8 @@ public class IMRIC extends BaseIMR {
       if (labelList.get(i)) {
         modify = labelSeries.getTimeseries().get(i).getVal();
       } else {
-        modify = dirtySeries.getTimeseries().get(i).getVal() + y[i - p][0];
+        //modify = dirtySeries.getTimeseries().get(i).getVal() + y[i - p][0];
+        modify = dirtySeries.getTimeseries().get(i).getVal() + (i - p >= 0 ? y[i - p][0] : 0);
       }
 
       tp = new TimePoint(timestamp, modify);
